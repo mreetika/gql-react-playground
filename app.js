@@ -10,13 +10,10 @@ const app = express()
 app.use(cors())
 
 mongoose.connect(process.env.DB_CRED)
-mongoose.connection.once('open', () => {
-  console.log('connected to mLab !!')
-})
 
-app.get('/ping', function (req, res) {
- return res.send('pong');
-});
+mongoose.connection.once('open', () => console.log('connected to .. not telling you where ;) '))
+
+app.get('/ping', (req, res) => res.send('pong'));
 
 app.use('/graphql', graphqlHTTP({
   schema: schema,
@@ -31,5 +28,5 @@ app.get('*', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log('now listening for request on port 4000')
+  console.log(`now listening for request on port ${port}`)
 })
