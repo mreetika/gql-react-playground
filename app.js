@@ -9,7 +9,7 @@ const app = express()
 
 app.use(cors())
 
-mongoose.connect('mongodb://pujasaha:graphqles6@ds345597.mlab.com:45597/gql-ninja')
+mongoose.connect(process.env.DB_CRED)
 mongoose.connection.once('open', () => {
   console.log('connected to mLab !!')
 })
